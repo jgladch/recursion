@@ -20,14 +20,16 @@ var stringifyJSON = function(obj) {
 			var value = stringifyJSON(object[keys[i]]);
 			objString = objString+'"'+key+'":'+value+'';
 			if (i + 1 < keys.length) {
-				objString = objString+", ";
+				objString = objString+",";
 			};
 		};
 		console.log(objString+'}');
 		return objString+'}';
 	};
 
-	if (typeof obj === 'string') {
+	if (typeof obj === 'function' || typeof obj === 'undefined'){
+		return;
+	} else if (typeof obj === 'string') {
 		return '"'+obj+'"';
 	} else if (typeof obj === 'number' || typeof obj === 'boolean'){
 		return obj.toString();
